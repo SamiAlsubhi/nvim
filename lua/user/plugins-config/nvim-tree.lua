@@ -1,5 +1,18 @@
+--this is revised
+
 -- following options are the default
 -- each of these are documented in `:help nvim-tree.OPTION_NAME`
+
+vim.g.nvim_tree_width = 25
+vim.g.nvim_tree_indent_markers = 1
+
+local status_ok, nvim_tree = pcall(require, "nvim-tree")
+if not status_ok then
+  return
+end
+
+--nvim_tree.setup {auto_open = 1, auto_close = 1, gitignore = 1}
+
 vim.g.nvim_tree_icons = {
   default = "",
   symlink = "",
@@ -42,7 +55,6 @@ nvim_tree.setup {
     "dashboard",
     "alpha",
   },
-  auto_close = true,
   open_on_tab = false,
   hijack_cursor = false,
   update_cwd = true,
