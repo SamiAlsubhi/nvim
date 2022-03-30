@@ -42,7 +42,6 @@ packer.init {
 return packer.startup(function(use)
   -- My plugins here
   use "wbthomason/packer.nvim" -- Have packer manage itself
-    
   -- File Explorer
     use {
       'kyazdani42/nvim-tree.lua',
@@ -69,12 +68,11 @@ config = "require('user.plugins-config.treesitter')"
   }
   use {"JoosepAlviste/nvim-ts-context-commentstring",event="BufRead"}
   use {"numToStr/Comment.nvim"  , config = "require('user.plugins-config.comment')"}
- 
 
   -- Telescope
   use {
     'nvim-telescope/telescope.nvim',
-    requires = {{'nvim-lua/plenary.nvim',"ahmedkhalf/project.nvim"}},
+    requires = {{'nvim-lua/plenary.nvim'}},
     cmd = "Telescope",
     config = "require('user.plugins-config.telescope')"
   }
@@ -94,7 +92,6 @@ config = "require('user.plugins-config.treesitter')"
   use {"akinsho/flutter-tools.nvim",config=function()
     require("flutter-tools").setup{}
   end}
- 
 
 
 
@@ -126,7 +123,7 @@ config = "require('user.plugins-config.treesitter')"
   use {"lukas-reineke/indent-blankline.nvim", config="require('user.plugins-config.indentline')"}
   use {'norcalli/nvim-colorizer.lua', config = function()
     require'colorizer'.setup()
-  end, 
+  end,
   event = "BufRead"}
 
 

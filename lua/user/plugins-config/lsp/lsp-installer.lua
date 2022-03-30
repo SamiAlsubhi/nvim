@@ -9,11 +9,11 @@ lsp_installer.on_server_ready(function(server)
 
 	local opts = require("user.plugins-config.lsp.lsp-options")
 
-	--custom options for these servers
-	 if server.name == "jsonls" then
-	 	local jsonls_opts = require("user.plugins-config.lsp.custom-lsp-options.jsonls")
-	 	opts = vim.tbl_deep_extend("force", jsonls_opts, opts)
-	 end
+	--custom options for these servers [this does not seem to work properly]
+	 -- if server.name == "jsonls" then
+	 -- 	local jsonls_opts = require("user.plugins-config.lsp.custom-lsp-options.jsonls")
+	 -- 	opts = vim.tbl_deep_extend("force", jsonls_opts, opts)
+	 -- end
 
 	 if server.name == "sumneko_lua" then
 	 	local sumneko_opts = require("user.plugins-config.lsp.custom-lsp-options.sumneko_lua")

@@ -145,10 +145,10 @@ telescope.setup {
 -- }
 
 -- add project root dir extension to telescope
-local status_ok, project = pcall(require, "project_nvim")
-if not status_ok then
-	return
-end
-project.setup()
-
-telescope.load_extension('projects')
+-- local status_ok, project = pcall(require, "project_nvim")
+-- if not status_ok then
+-- 	return
+-- end
+-- project.setup()
+--
+-- telescope.load_extension('projects')
