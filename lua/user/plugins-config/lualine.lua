@@ -52,7 +52,7 @@ local diff = {
 	"diff",
 	colored = false,
 	symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
-  cond = hide_in_width
+	cond = hide_in_width,
 }
 
 local mode = {
@@ -93,34 +93,34 @@ local spaces = function()
 	return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
 end
 
---local null_ls_sources= require('null-ls.get_sources')
+local null_ls_sources = require("null-ls.sources")
 
-local lsp_info= function()
-    local active_clients = ''
-    local no_clients = 'No Active Lsp'
-    local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
-    local clients = vim.lsp.get_active_clients()
-    if next(clients) == nil then
-      return no_clients 
-    end
-    for _, client in ipairs(clients) do
-      if client.name ~= 'null-ls' then
-        local filetypes = client.config.filetypes
-        if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-          active_clients = active_clients ..','.. client.name
-        end
-      end
-    end
+local lsp_info = function()
+	local active_clients = ""
+	local no_clients = "No Active Lsp"
+	local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
+	local clients = vim.lsp.get_active_clients()
+	if next(clients) ~= nil then
+		for _, client in ipairs(clients) do
+			if client.name ~= "null-ls" then
+				local filetypes = client.config.filetypes
+				if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+					active_clients = active_clients .. "," .. client.name
+				end
+			end
+		end
+	end
 
-    -- for _,source in ipairs(null_ls_sources)  do
-    --   active_clients = active_clients ..','.. source.name
-    -- end
+	local bufnr = vim.api.nvim_get_current_buf()
+	local filetype = vim.api.nvim_buf_get_option(bufnr, "filetype")
+	for _, source in ipairs(null_ls_sources.get_available(filetype)) do
+		active_clients = active_clients .. "," .. source.name
+	end
 
-      
-    if active_clients == '' then
-      return no_clients
-    end
-    return active_clients:sub(2)
+	if active_clients == "" then
+		return no_clients
+	end
+	return active_clients:sub(2)
 end
 
 lualine.setup({
@@ -135,11 +135,11 @@ lualine.setup({
 	sections = {
 		lualine_a = { branch, diagnostics },
 		lualine_b = { mode },
-		lualine_c = {{
-    lsp_info,
-  icon = 'LSP:',
-  color = {  gui = 'bold' }}}
-,
+		lualine_c = { {
+			lsp_info,
+			icon = "LSP:",
+			color = { gui = "bold" },
+		} },
 		-- lualine_x = { "encoding", "fileformat", "filetype" },
 		lualine_x = { diff, spaces, "encoding", filetype },
 		lualine_y = { location },
@@ -156,9 +156,6 @@ lualine.setup({
 	tabline = {},
 	extensions = {},
 })
-
-
-
 
 -------------------------------
 
