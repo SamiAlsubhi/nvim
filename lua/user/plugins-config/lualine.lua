@@ -137,7 +137,7 @@ lualine.setup({
 		lualine_b = { mode },
 		lualine_c = { {
 			lsp_info,
-			icon = "LSP:",
+			icon = " ",
 			color = { gui = "bold" },
 		} },
 		-- lualine_x = { "encoding", "fileformat", "filetype" },
