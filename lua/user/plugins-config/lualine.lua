@@ -93,10 +93,18 @@ local spaces = function()
 	return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
 end
 
+local function inTable(tbl, item)
+	for key, value in pairs(tbl) do
+		if value == item then
+			return true
+		end
+	end
+	return false
+end
 local null_ls_sources = require("null-ls.sources")
 
 local lsp_info = function()
-	local active_clients = ""
+	local active_clients = {}
 	local no_clients = "No Active Lsp"
 	local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
 	local clients = vim.lsp.get_active_clients()
@@ -105,7 +113,7 @@ local lsp_info = function()
 			if client.name ~= "null-ls" then
 				local filetypes = client.config.filetypes
 				if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-					active_clients = active_clients .. "," .. client.name
+					active_clients[#active_clients + 1] = client.name
 				end
 			end
 		end
@@ -114,13 +122,13 @@ local lsp_info = function()
 	local bufnr = vim.api.nvim_get_current_buf()
 	local filetype = vim.api.nvim_buf_get_option(bufnr, "filetype")
 	for _, source in ipairs(null_ls_sources.get_available(filetype)) do
-		active_clients = active_clients .. "," .. source.name
+		active_clients[#active_clients + 1] = source.name
 	end
 
-	if active_clients == "" then
+	if #active_clients == 0 then
 		return no_clients
 	end
-	return active_clients:sub(2)
+	return table.concat(active_clients, "+")
 end
 
 lualine.setup({
