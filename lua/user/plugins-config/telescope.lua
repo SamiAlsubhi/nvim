@@ -7,7 +7,7 @@ end
 local actions = require("telescope.actions")
 telescope.setup({
 	defaults = {
-		file_ignore_patterns = { "node_modules", "htmlcov" },
+		file_ignore_patterns = { "node_modules", "htmlcov", "android", "ios" },
 		prompt_prefix = " ",
 		selection_caret = " ",
 		path_display = { "smart" },
