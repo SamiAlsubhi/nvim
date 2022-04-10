@@ -89,7 +89,6 @@ return packer.startup(function(use)
 			"williamboman/nvim-lsp-installer",
 			"jose-elias-alvarez/null-ls.nvim",
 			"tamago324/nlsp-settings.nvim",
-			"ray-x/lsp_signature.nvim",
 		},
 	})
 	use({ "tami5/lspsaga.nvim", config = "require('user.plugins-config.lspsaga')" })
