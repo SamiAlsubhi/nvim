@@ -57,12 +57,12 @@ return packer.startup(function(use)
 	use({ "navarasu/onedark.nvim", config = "vim.cmd('colorscheme onedark')" }) -- colorscheme
 
 	-- Packer
-	use({
-		"sindrets/diffview.nvim",
-		requires = "nvim-lua/plenary.nvim",
-		config = "require('user.plugins-config.diffview')",
-	})
-
+	-- use({
+	-- 	"sindrets/diffview.nvim",
+	-- 	requires = "nvim-lua/plenary.nvim",
+	-- 	config = "require('user.plugins-config.diffview')",
+	-- })
+	--
 	-- Syntax highlighting
 	use({
 		"nvim-treesitter/nvim-treesitter",
