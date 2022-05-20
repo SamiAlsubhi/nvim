@@ -121,6 +121,7 @@ return packer.startup(function(use)
 	-- buffer management and status line
 	use({
 		"akinsho/bufferline.nvim",
+		tag = "v2.*",
 		requires = "kyazdani42/nvim-web-devicons",
 		event = "BufWinEnter",
 		config = "require('user.plugins-config.bufferline')",
