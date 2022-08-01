@@ -128,7 +128,7 @@ local lsp_info = function()
 	if #active_clients == 0 then
 		return no_clients
 	end
-	return table.concat(active_clients, "+")
+	return "[" .. table.concat(active_clients, ", ") .. "]"
 end
 
 lualine.setup({
@@ -146,7 +146,7 @@ lualine.setup({
 		lualine_c = { {
 			lsp_info,
 			icon = " ",
-			color = { gui = "bold" },
+			color = { gui = "bold", fg = "#a9a1e1" },
 		} },
 		-- lualine_x = { "encoding", "fileformat", "filetype" },
 		lualine_x = { diff, spaces, "encoding", filetype },

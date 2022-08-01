@@ -93,6 +93,7 @@ local mappings = {
 	Q = { ":wq<cr>", "Save & Quit" },
 	w = { ":w<cr>", "Save" },
 	x = { ":bdelete<cr>", "Close Buffer" },
+	b = { ":Telescope buffers<cr>", "View Buffers" },
 	e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
 	f = { ":Telescope find_files<cr>", "Telescope Find Files" },
 	F = { ":Telescope live_grep<cr>", "Telescope Live Grep" },

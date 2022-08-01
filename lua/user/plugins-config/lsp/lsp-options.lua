@@ -62,8 +62,13 @@ end
 
 options.on_attach = function(client, bufnr)
 	if client.name == "tsserver" then
-		client.resolved_capabilities.document_formatting =true 
+		client.resolved_capabilities.document_formatting = true
 	end
+
+	if client.name == "sumneko_lua" then
+		client.resolved_capabilities.document_formatting = false
+	end
+
 	lsp_highlight_document(client)
 	lsp_keymaps(bufnr)
 	-- lsp_signature_attach(client, bufnr)

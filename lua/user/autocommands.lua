@@ -1,4 +1,4 @@
-vim.cmd [[
+vim.cmd([[
   augroup _general_settings
     autocmd!
     autocmd FileType qf,help,man,lspinfo nnoremap <silent> <buffer> q :close<CR> 
@@ -29,8 +29,13 @@ vim.cmd [[
     autocmd User AlphaReady set showtabline=0 | autocmd BufUnload <buffer> set showtabline=2
   augroup end
 
-   augroup _lsp_auto_format
+  augroup _lsp_auto_format
      autocmd!
      autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()
    augroup end
- ]]
+
+  " augroup _flutter_hot_reload
+  "    autocmd!
+  "    silent execute '!kill -s USR1 "$(pgrep -f flutter_tools.snapshot\ run)" &> /dev/null'
+  "  augroup end
+ ]])
