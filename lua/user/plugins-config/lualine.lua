@@ -143,11 +143,18 @@ lualine.setup({
 	sections = {
 		lualine_a = { branch, diagnostics },
 		lualine_b = { mode },
-		lualine_c = { {
-			lsp_info,
-			icon = " ",
-			color = { gui = "bold", fg = "#a9a1e1" },
-		} },
+		lualine_c = {
+			{
+				lsp_info,
+				icon = " ",
+				color = { gui = "bold", fg = "#a9a1e1" },
+			},
+			{
+				"filename",
+				file_status = true,
+				path = 1,
+			},
+		},
 		-- lualine_x = { "encoding", "fileformat", "filetype" },
 		lualine_x = { diff, spaces, "encoding", filetype },
 		lualine_y = { location },
