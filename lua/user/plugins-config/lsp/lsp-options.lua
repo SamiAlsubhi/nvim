@@ -2,7 +2,7 @@ local options = {}
 
 local function lsp_highlight_document(client)
 	-- Set autocommands conditional on server_capabilities
-	if client.resolved_capabilities.document_highlight then
+	if client.server_capabilities.documentFormattingProvider then
 		vim.api.nvim_exec(
 			[[
       augroup lsp_document_highlight
@@ -62,11 +62,11 @@ end
 
 options.on_attach = function(client, bufnr)
 	if client.name == "tsserver" then
-		client.resolved_capabilities.document_formatting = true
+		client.server_capabilities.documentFormattingProvider = true
 	end
 
 	if client.name == "sumneko_lua" then
-		client.resolved_capabilities.document_formatting = false
+		client.server_capabilities.documentFormattingProvider = false
 	end
 
 	lsp_highlight_document(client)
