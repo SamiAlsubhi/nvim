@@ -81,6 +81,6 @@ if not status_ok then
 	return
 end
 
-options.capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+options.capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 
 return options
