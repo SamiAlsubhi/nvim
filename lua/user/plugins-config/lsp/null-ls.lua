@@ -28,14 +28,14 @@ null_ls.setup({
 		--     "txt",
 		--   },
 		-- }),
-		formatting.stylua,
+		-- formatting.stylua,
 	},
 	on_attach = function(client)
 		if client.server_capabilities.documentFormattingProvider then
 			vim.cmd([[
             augroup LspFormatting
                 autocmd! * <buffer>
-                autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
+                autocmd BufWritePre <buffer> lua vim.lsp.buf.format()
             augroup END
             ]])
 		end
