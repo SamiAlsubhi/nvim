@@ -55,8 +55,30 @@ return packer.startup(function(use)
 
   -- colorscheme
   -- WARNING: needs to load tokyonight before onedark in order for onedark to work properly on html attributes
-  use({ "folke/tokyonight.nvim", config = "vim.cmd('colorscheme tokyonight')" })
-  use({ "navarasu/onedark.nvim", config = "vim.cmd('colorscheme onedark')" }) -- colorscheme
+  -- use({ "folke/tokyonight.nvim", config = "vim.cmd('colorscheme tokyonight')" })
+  -- use({ "navarasu/onedark.nvim", config = "vim.cmd('colorscheme onedark')" }) -- colorscheme
+  use({ "olimorris/onedarkpro.nvim", 
+      config = function()
+            require("onedarkpro").setup({ 
+             styles = {
+                types = "NONE",
+                methods = "NONE",
+                numbers = "NONE",
+                strings = "NONE",
+                comments = "italic",
+                keywords = "bold,italic",
+                constants = "NONE",
+                functions = "italic",
+                operators = "NONE",
+                variables = "NONE",
+                parameters = "NONE",
+                conditionals = "italic",
+                virtual_text = "NONE",
+              }
+            })
+          vim.cmd('colorscheme onedark')
+      end
+  }) 
   -- Packer
   use({
     "folke/trouble.nvim",
@@ -89,7 +111,7 @@ return packer.startup(function(use)
       -- "tamago324/nlsp-settings.nvim",
     },
   })
-  use({ "tami5/lspsaga.nvim", config = "require('user.plugins-config.lspsaga')" })
+  -- use({ "tami5/lspsaga.nvim", config = "require('user.plugins-config.lspsaga')" })
   use({
     "hrsh7th/nvim-cmp",
     config = "require('user.plugins-config.cmp')",
@@ -113,9 +135,9 @@ return packer.startup(function(use)
   -- buffer management and status line
   use({
     "akinsho/bufferline.nvim",
-    tag = "v2.*",
+    tag = "*",--"v2.*",
     requires = "kyazdani42/nvim-web-devicons",
-    event = "BufWinEnter",
+    -- event = "BufWinEnter",
     config = "require('user.plugins-config.bufferline')",
   })
   use({ "nvim-lualine/lualine.nvim", config = "require('user.plugins-config.lualine')" })
