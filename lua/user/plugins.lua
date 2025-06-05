@@ -76,7 +76,7 @@ return packer.startup(function(use)
                 virtual_text = "NONE",
               }
             })
-          vim.cmd('colorscheme onedark')
+          vim.cmd("colorscheme onedark")
       end
   }) 
   -- Packer
@@ -111,7 +111,8 @@ return packer.startup(function(use)
       -- "tamago324/nlsp-settings.nvim",
     },
   })
-  -- use({ "tami5/lspsaga.nvim", config = "require('user.plugins-config.lspsaga')" })
+  -- use({ "tami5/lspsaga.nvim",commit="3101712", config = "require('user.plugins-config.lspsaga')" })
+  use({ "nvimdev/lspsaga.nvim", config = "require('user.plugins-config.lspsaga')" })
   use({
     "hrsh7th/nvim-cmp",
     config = "require('user.plugins-config.cmp')",

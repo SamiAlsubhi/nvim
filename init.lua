@@ -1,4 +1,4 @@
 require "user.options"
 require "user.keymaps"
-require "user.plugins"
+require "user.lazy-plugins"
 require "user.autocommands"

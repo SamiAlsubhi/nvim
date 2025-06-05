@@ -2,7 +2,7 @@ local options = {}
 
 local function lsp_highlight_document(client)
   -- Set autocommands conditional on server_capabilities
-  if client.server_capabilities.documentFormattingProvider and client.name ~= "svelte" then
+  if client.server_capabilities.documentFormattingProvider and client.name ~= "svelte" and client.name ~= "jsonls" then
     vim.api.nvim_exec(
       [[
 		    augroup lsp_document_highlight
